@@ -6,7 +6,7 @@ application = Flask(__name__)
 @application.route('/')
 @application.route('/index')
 def index():
-    return "Welcome to Reminder's RESTful API!"
+    return "Welcome to EchoLock's RESTful API!"
 '''
 @application.route('/harambe/diagnosis', methods=['POST'])
 def route_first():
