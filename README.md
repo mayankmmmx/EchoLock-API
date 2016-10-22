@@ -1,2 +1,2 @@
-# Reminder-API
+# EchoLock-API
 API for HackHarvard
