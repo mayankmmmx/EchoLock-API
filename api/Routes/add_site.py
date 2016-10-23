@@ -12,7 +12,7 @@ def create_request(request):
     users = db.users
 
     #account already added
-    if (users.find_one({"api_key": key}, {"sites" : [{"site_name" : name}]})):
+    if (users.find_one({"api_key": key, "sites" : [{"site_name" : name}]})):
         return ["-1", "Error: this account is already added"]
 
     else:
