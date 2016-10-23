@@ -12,7 +12,7 @@ def create_request(request):
     response = users.find_one({"api_key": key})
     for site in response["logged_in"]:
         if site["site_name"] == name:
-            return ["0", "Would you like to log into " + str(name)]
+            return ["0", "Would you like to log into ratatype"]
 
     return ["-1", "Site not found!"]
 
