@@ -24,4 +24,3 @@ def value_changed(message):
 
 if __name__ == "__main__":
     application.run(debug=True)
-    socketio.run(application)
