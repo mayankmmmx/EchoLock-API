@@ -65,7 +65,7 @@ def register():
 @crossdomain(origin='*', methods=None, headers={'Content-Type': 'application/json'})
 def login():
     if request.headers['Content-Type'] == 'application/json':
-        data = jsonify(Routes.login.respond(request.get_json()))
+        data = Routes.login.respond(request.get_json())
         resp = Response(response=data,
                 status=200, \
                 mimetype="application/json")
