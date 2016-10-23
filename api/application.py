@@ -14,17 +14,17 @@ def index():
     return "Welcome to EchoLock's RESTful API!"
 
 @application.route('/harambe/register', methods=['POST'])
-def route_first():
+def register():
     if request.headers['Content-Type'] == 'application/json':
         return jsonify(Routes.register.respond(request.get_json()))
 
 @application.route('/harambe/login', methods=['POST'])
-def route_first():
+def login():
     if request.headers['Content-Type'] == 'application/json':
         return jsonify(Routes.login.respond(request.get_json()))
 
 @application.route('/harambe/add_site', methods=['POST'])
-def route_first():
+def add_site():
     if request.headers['Content-Type'] == 'application/json':
         return jsonify(Routes.add_site.respond(request.get_json()))
 
