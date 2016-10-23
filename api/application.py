@@ -1,6 +1,6 @@
 # hack for harambe
 from datetime import timedelta
-from flask import Flask, Response, request, jsonify, make_response, current_app
+from flask import Flask, Response, request, jsonify, make_response, current_app, Response
 from functools import update_wrapper
 import Routes.register
 import Routes.login
@@ -65,7 +65,12 @@ def register():
 @crossdomain(origin='*', methods=None, headers={'Content-Type': 'application/json'})
 def login():
     if request.headers['Content-Type'] == 'application/json':
-        return jsonify(Routes.login.respond(request.get_json()))
+        data = jsonify(Routes.login.respond(request.get_json()))
+        resp = Response(response=data,
+                status=200, \
+                mimetype="application/json")
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        return resp
 
 @application.route('/harambe/add_site', methods=['POST', 'OPTIONS'])
 @crossdomain(origin='*', methods=None, headers={'Content-Type': 'application/json'})
