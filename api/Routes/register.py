@@ -14,7 +14,8 @@ def create_request(request):
         "api_key" : create_auth_token(),
         "login_username" : username,
         "login_password" : password,
-        "sites" : []
+        "sites" : [],
+        "logged_in": [],
     }
 
     if(users.find_one({"login_username" : username}) == None):
