@@ -55,19 +55,19 @@ def crossdomain(origin=None, methods=None, headers=None,
 def index():
     return "Welcome to EchoLock's RESTful API!"
 
-@application.route('/harambe/register', methods=['POST'])
+@application.route('/harambe/register', methods=['POST', 'OPTIONS'])
 @crossdomain(origin='*')
 def register():
     if request.headers['Content-Type'] == 'application/json':
         return jsonify(Routes.register.respond(request.get_json()))
 
-@application.route('/harambe/login', methods=['POST'])
+@application.route('/harambe/login', methods=['POST', 'OPTIONS'])
 @crossdomain(origin='*')
 def login():
     if request.headers['Content-Type'] == 'application/json':
         return jsonify(Routes.login.respond(request.get_json()))
 
-@application.route('/harambe/add_site', methods=['POST'])
+@application.route('/harambe/add_site', methods=['POST', 'OPTIONS'])
 @crossdomain(origin='*')
 def add_site():
     if request.headers['Content-Type'] == 'application/json':
