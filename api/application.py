@@ -1,6 +1,10 @@
 # hack for harambe
 from flask import Flask, Response, request, jsonify
 from flask_socketio import SocketIO, send, emit
+import Routes.register
+import Routes.login
+import Routes.add_site
+
 application = Flask(__name__)
 socketio = SocketIO(application)
 
@@ -8,19 +12,26 @@ socketio = SocketIO(application)
 @application.route('/index')
 def index():
     return "Welcome to EchoLock's RESTful API!"
-'''
-@application.route('/harambe/diagnosis', methods=['POST'])
+
+@application.route('/harambe/register', methods=['POST'])
 def route_first():
     if request.headers['Content-Type'] == 'application/json':
-        return jsonify(Routes.diagnosis.respond(request.get_json()))
-'''
+        return jsonify(Routes.register.respond(request.get_json()))
 
+@application.route('/harambe/login', methods=['POST'])
+def route_first():
+    if request.headers['Content-Type'] == 'application/json':
+        return jsonify(Routes.login.respond(request.get_json()))
+
+@application.route('/harambe/add_site', methods=['POST'])
+def route_first():
+    if request.headers['Content-Type'] == 'application/json':
+        return jsonify(Routes.add_site.respond(request.get_json()))
 
 @socketio.on('value changed')
 def value_changed(message):
     print(message)
     emit('update value', "temp", broadcast=True)
-
 
 if __name__ == "__main__":
     application.run(debug=True)
