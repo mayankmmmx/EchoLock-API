@@ -1,6 +1,7 @@
 # hack for harambe
 from datetime import timedelta
 from flask import Flask, Response, request, jsonify, make_response, current_app
+from functools import update_wrapper
 import Routes.register
 import Routes.login
 import Routes.add_site
