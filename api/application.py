@@ -64,7 +64,8 @@ def register():
 @application.route('/harambe/login', methods=['POST', 'OPTIONS'])
 @crossdomain(origin='*')
 def login():
-    return jsonify(Routes.login.respond(request.get_json()))
+    if request.headers['Content-Type'] == 'application/json':
+        return jsonify(Routes.login.respond(request.get_json()))
 
 @application.route('/harambe/add_site', methods=['POST', 'OPTIONS'])
 @crossdomain(origin='*')
