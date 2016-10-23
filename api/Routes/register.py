@@ -16,6 +16,7 @@ def create_request(request):
         "login_password" : password,
         "sites" : [],
         "logged_in": [],
+        "can_log_in": False,
     }
 
     if(users.find_one({"login_username" : username}) == None):
