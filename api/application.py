@@ -4,9 +4,11 @@ from flask_socketio import SocketIO, send, emit
 import Routes.register
 import Routes.login
 import Routes.add_site
+import eventlet
 
 application = Flask(__name__)
-socketio = SocketIO(application)
+socketio = SocketIO(application, async_mode='eventlet')
+eventlet.monkey_patch()
 
 @application.route('/')
 @application.route('/index')
@@ -35,4 +37,4 @@ def value_changed(message):
 
 if __name__ == "__main__":
     application.run(debug=True)
-    socketio.run(application)
+    socketio.run(application, debug=True)
